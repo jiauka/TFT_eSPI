@@ -1,11 +1,12 @@
  // Coded by Bodmer 10/2/18, see license in root directory.
  // This is part of the TFT_eSPI class and is associated with anti-aliased font functions
  
+#include <Arduino.h>
+#include "../TFT_eSPI.h"
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // New anti-aliased (smoothed) font functions added below
 ////////////////////////////////////////////////////////////////////////////////////////
-
 /***************************************************************************************
 ** Function name:           loadFont
 ** Description:             loads parameters from a new font vlw file

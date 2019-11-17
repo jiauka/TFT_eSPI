@@ -5,7 +5,7 @@
 
 // For Raspberry Pi ILI9486 only with a modified board to add a write strobe:
 #if defined (TFT_WR) && defined (RPI_ILI9486_DRIVER)
-  #define RPI_WRITE_STROBE
+#define RPI_WRITE_STROBE
 #endif
 
 // Color definitions for backwards compatibility with old sketches
@@ -30,10 +30,8 @@
 #define ILI9486_GREENYELLOW 0xAFE5      /* 173, 255,  47 */
 #define ILI9486_PINK        0xF81F
 
-
 // Delay between some initialisation commands
-#define TFT_INIT_DELAY 0x80 // Not used unless commandlist invoked
-
+#define TFT_INIT_DELAY 0x80     // Not used unless commandlist invoked
 
 // Generic commands used by TFT_eSPI.cpp
 #define TFT_NOP     0x00
@@ -44,7 +42,7 @@
 #define TFT_RAMWR   0x2C
 
 #define TFT_RAMRD   0x2E
-#define TFT_IDXRD   0x00 // ILI9341 only, indexed control register read
+#define TFT_IDXRD   0x00        // ILI9341 only, indexed control register read
 
 #define TFT_MADCTL  0x36
 #define TFT_MAD_MY  0x80

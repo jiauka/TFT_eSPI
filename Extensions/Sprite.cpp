@@ -14,6 +14,8 @@
 ** Function name:           TFT_eSprite
 ** Description:             Class constructor
 *************************************************************************************x*/
+#include "Sprite.h"
+#include "../TFT_eSPI.h"
 TFT_eSprite::TFT_eSprite(TFT_eSPI *tft)
 {
   _tft = tft;     // Pointer to tft class so we can call member functions

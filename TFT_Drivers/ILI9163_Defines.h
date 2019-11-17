@@ -1,14 +1,14 @@
 // Change the width and height if required (defined in portrait mode)
 // or use the constructor to over-ride defaults
 #ifndef TFT_WIDTH
-  #define TFT_WIDTH  128
+#define TFT_WIDTH  128
 #endif
 #ifndef TFT_HEIGHT
-  #define TFT_HEIGHT 160
+#define TFT_HEIGHT 160
 #endif
 
 #if (TFT_HEIGHT == 128) && (TFT_WIDTH == 128)
-  #define CGRAM_OFFSET
+#define CGRAM_OFFSET
 #endif
 
 // Color definitions for backwards compatibility with old sketches
@@ -33,10 +33,8 @@
 #define ILI9163_GREENYELLOW 0xAFE5      /* 173, 255,  47 */
 #define ILI9163_PINK        0xF81F
 
-
 // Delay between some initialisation commands
 #define TFT_INIT_DELAY 0x80
-
 
 // Generic commands used by TFT_eSPI.cpp
 #define TFT_NOP     0x00
@@ -47,7 +45,7 @@
 #define TFT_RAMWR   0x2C
 
 #define TFT_RAMRD   0x2E
-#define TFT_IDXRD   0x00 //0xDD // ILI9341 only, indexed control register read
+#define TFT_IDXRD   0x00        //0xDD // ILI9341 only, indexed control register read
 
 #define TFT_MADCTL  0x36
 #define TFT_MAD_MY  0x80

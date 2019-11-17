@@ -4,10 +4,10 @@
 
 #define ST7789_DRIVER
 
-#define TFT_SDA_READ // Read from display, it only provides an SDA pin
+#define TFT_SDA_READ            // Read from display, it only provides an SDA pin
 
-#define TFT_MISO 19  // Must be defined even though it is not used
-#define TFT_MOSI 23  // Connected to display SDA line
+#define TFT_MISO 19             // Must be defined even though it is not used
+#define TFT_MOSI 23             // Connected to display SDA line
 #define TFT_SCLK 18
 
 #define TFT_CS   05
@@ -18,7 +18,7 @@
 #define TFT_HEIGHT 320
 
 //#define TFT_RGB_ORDER TFT_RGB  // Colour order Red-Green-Blue
-#define TFT_RGB_ORDER TFT_BGR // Colour order Blue-Green-Red
+#define TFT_RGB_ORDER TFT_BGR   // Colour order Blue-Green-Red
 
 #define LOAD_GLCD
 #define LOAD_FONT2
@@ -30,7 +30,7 @@
 
 #define SMOOTH_FONT
 
-#define SPI_FREQUENCY  40000000     // This display also seems to work reliably at 80MHz
+#define SPI_FREQUENCY  40000000 // This display also seems to work reliably at 80MHz
 #define SPI_FREQUENCY  80000000
 
-#define SPI_READ_FREQUENCY  6000000 // 6 MHz is the maximum SPI read speed for the ST7789V
+#define SPI_READ_FREQUENCY  6000000     // 6 MHz is the maximum SPI read speed for the ST7789V

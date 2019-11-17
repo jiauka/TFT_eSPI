@@ -3,10 +3,8 @@
 #define TFT_WIDTH  320
 #define TFT_HEIGHT 480
 
-
 // Delay between some initialisation commands
-#define TFT_INIT_DELAY 0x80 // Not used unless commandlist invoked
-
+#define TFT_INIT_DELAY 0x80     // Not used unless commandlist invoked
 
 // Generic commands used by TFT_eSPar.cpp
 #define TFT_NOP     0x00
@@ -39,8 +37,7 @@
 #define TFT_MAD_SS  0x02
 #define TFT_MAD_GS  0x01
 
-#define TFT_IDXRD   0x00 // ILI9341 only, indexed control register read
-
+#define TFT_IDXRD   0x00        // ILI9341 only, indexed control register read
 
 #define HX8357_NOP     0x00
 #define HX8357_SWRESET 0x01

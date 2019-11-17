@@ -9,7 +9,9 @@
 // and to correct rotation handling
 
 // See license in root directory.
-
+#include <Arduino.h>
+#include "../TFT_eSPI.h"
+extern SPIClass& spi;
 /***************************************************************************************
 ** Function name:           getTouchRaw
 ** Description:             read raw touch position.  Always returns true.

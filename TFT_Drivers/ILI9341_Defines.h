@@ -3,7 +3,6 @@
 #define TFT_WIDTH  240
 #define TFT_HEIGHT 320
 
-
 // Color definitions for backwards compatibility with old sketches
 // use colour definitions like TFT_BLACK to make sketches more portable
 #define ILI9341_BLACK       0x0000      /*   0,   0,   0 */
@@ -26,10 +25,8 @@
 #define ILI9341_GREENYELLOW 0xAFE5      /* 173, 255,  47 */
 #define ILI9341_PINK        0xF81F
 
-
 // Delay between some initialisation commands
-#define TFT_INIT_DELAY 0x80 // Not used unless commandlist invoked
-
+#define TFT_INIT_DELAY 0x80     // Not used unless commandlist invoked
 
 // Generic commands used by TFT_eSPI.cpp
 #define TFT_NOP     0x00
@@ -40,7 +37,7 @@
 #define TFT_RAMWR   0x2C
 
 #define TFT_RAMRD   0x2E
-#define TFT_IDXRD   0xDD // ILI9341 only, indexed control register read
+#define TFT_IDXRD   0xDD        // ILI9341 only, indexed control register read
 
 #define TFT_MADCTL  0x36
 #define TFT_MAD_MY  0x80
@@ -52,18 +49,17 @@
 #define TFT_MAD_RGB 0x00
 
 #ifdef TFT_RGB_ORDER
-  #if (TFT_RGB_ORDER == 1)
-    #define TFT_MAD_COLOR_ORDER TFT_MAD_RGB
-  #else
-    #define TFT_MAD_COLOR_ORDER TFT_MAD_BGR
-  #endif
+#if (TFT_RGB_ORDER == 1)
+#define TFT_MAD_COLOR_ORDER TFT_MAD_RGB
 #else
-  #define TFT_MAD_COLOR_ORDER TFT_MAD_BGR
+#define TFT_MAD_COLOR_ORDER TFT_MAD_BGR
+#endif
+#else
+#define TFT_MAD_COLOR_ORDER TFT_MAD_BGR
 #endif
 
 #define TFT_INVOFF  0x20
 #define TFT_INVON   0x21
-
 
 // All ILI9341 specific commands some are used by init()
 #define ILI9341_NOP     0x00
@@ -122,7 +118,7 @@
 #define ILI9341_RDID1   0xDA
 #define ILI9341_RDID2   0xDB
 #define ILI9341_RDID3   0xDC
-#define ILI9341_RDIDX   0xDD // TBC
+#define ILI9341_RDIDX   0xDD    // TBC
 
 #define ILI9341_GMCTRP1 0xE0
 #define ILI9341_GMCTRN1 0xE1

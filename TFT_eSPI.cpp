@@ -264,8 +264,17 @@ TFT_eSPI::TFT_eSPI(int16_t w, int16_t h)
 #ifdef SMOOTH_FONT
   fontsloaded |= 0x8000; // Bit 15 set
 #endif
+    _tftMutex = xSemaphoreCreateMutex();
 }
 
+void TFT_eSPI::block(void)
+{
+    xSemaphoreTake(_tftMutex, portMAX_DELAY);
+}
+void TFT_eSPI::unblock(void)
+{
+    xSemaphoreGive(_tftMutex);
+}
 
 /***************************************************************************************
 ** Function name:           begin

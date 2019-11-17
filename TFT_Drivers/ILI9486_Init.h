@@ -10,13 +10,13 @@
 
     //writecommand(0x01); // SW reset
     //delay(120);
-	
-    writecommand(0x11); // Sleep out, also SW reset
+
+    writecommand(0x11);         // Sleep out, also SW reset
     delay(120);
 
     writecommand(0x3A);
     writedata(0x55);
- 
+
     writecommand(0xC2);
     writedata(0x44);
 
@@ -42,7 +42,7 @@
     writedata(0x11);
     writedata(0x0D);
     writedata(0x00);
- 
+
     writecommand(0xE1);
     writedata(0x0F);
     writedata(0x32);
@@ -59,12 +59,12 @@
     writedata(0x24);
     writedata(0x20);
     writedata(0x00);
- 
-    writecommand(0x20);                     // display inversion OFF
-  
+
+    writecommand(0x20);         // display inversion OFF
+
     writecommand(0x36);
     writedata(0x48);
 
-    writecommand(0x29);                     // display on
+    writecommand(0x29);         // display on
     delay(150);
 }
