@@ -872,4 +872,7 @@ class TFT_eSPI:public Print {
 // Load the Sprite Class
 #include "Extensions/Sprite.h"
 
+// Load the Slider Class
+#include "Extensions/Slider.h"
+
 #endif
