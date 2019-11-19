@@ -34,7 +34,7 @@ class TFT_eSPI_Button {
                       uint16_t textcolor, char *label, uint8_t textsize);
      void initButtonTUL(TFT_eSPI * gfx, int16_t x1, int16_t y1,
                       uint16_t w, uint16_t h, uint16_t fill,
-                      uint16_t textcolor, char *label, const GFXfont *font);
+                      uint16_t textcolor, uint16_t outline,char *label,char *labelValue, const GFXfont *font);
     void initButtonGUL(TFT_eSPI *gfx, int16_t x1, int16_t y1, 
                         uint16_t w, uint16_t h,
                         void *imgOn, void *imgOff,uint16_t size);
@@ -51,6 +51,7 @@ class TFT_eSPI_Button {
     void drawIcon(const unsigned short *icon, int16_t x, int16_t y, int8_t width, int8_t height);
     void setX( int16_t x);
     void setY( int16_t y);
+    void setLabelValue( char *s);
     void enable();
     void disable();
     boolean disabled();
@@ -63,6 +64,8 @@ class TFT_eSPI_Button {
     uint16_t _fillcolor, _textcolor;
     espi_button_t _type;
     char *_label;
+    char *_labelValue;
+
     void *_imgOn; // BITMAP and XBM types
     void *_imgOff; //BITMAP
     const GFXfont *_font;

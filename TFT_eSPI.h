@@ -440,7 +440,10 @@
   // Sans serif fonts
 #include <Fonts/GFXFF/FreeSans9pt7b.h>  // FF17 or FSS9
 #include <Fonts/GFXFF/FreeSans12pt7b.h> // FF18 or FSS12
+#include <Fonts/GFXFF/FreeSans12pt8b.h> // FF18 or FSS12
 #include <Fonts/GFXFF/FreeSans18pt7b.h> // FF19 or FSS18
+#include <Fonts/GFXFF/FreeSans18pt8b.h> // FF19 or FSS18
+
 #include <Fonts/GFXFF/FreeSans24pt7b.h> // FF20 or FSS24
 
 #include <Fonts/GFXFF/FreeSansOblique9pt7b.h>   // FF21 or FSSO9
@@ -450,6 +453,7 @@
 
 #include <Fonts/GFXFF/FreeSansBold9pt7b.h>      // FF25 or FSSB9
 #include <Fonts/GFXFF/FreeSansBold12pt7b.h>     // FF26 or FSSB12
+#include <Fonts/GFXFF/FreeSansBold12pt8b.h>     // FF26 or FSSB12
 #include <Fonts/GFXFF/FreeSansBold18pt7b.h>     // FF27 or FSSB18
 #include <Fonts/GFXFF/FreeSansBold24pt7b.h>     // FF28 or FSSB24
 

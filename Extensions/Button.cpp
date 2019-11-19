@@ -54,8 +54,8 @@ void TFT_eSPI_Button::initButtonUL(
 // Newer function instead accepts upper-left corner & size
 void TFT_eSPI_Button::initButtonTUL(
  TFT_eSPI *gfx, int16_t x1, int16_t y1, uint16_t w, uint16_t h,
- uint16_t fill, uint16_t textcolor,
- char *label, const GFXfont *font)
+ uint16_t fill, uint16_t textcolor, uint16_t outline,
+ char *label, char *labelValue,const GFXfont *font)
 {
   _x1           = x1;
   _y1           = y1;
@@ -63,10 +63,13 @@ void TFT_eSPI_Button::initButtonTUL(
   _h            = h;
   _fillcolor    = fill;
   _textcolor    = textcolor;
+  _outlinecolor = outline;
   _font     = font;
   _gfx          = gfx;
   _type=TEXT_ONLY;
   _label=label;
+  _labelValue=labelValue;
+
     _laststate = _currstate=false;
 	_disabled = false;
 }
@@ -153,14 +156,19 @@ void TFT_eSPI_Button::drawButton(boolean inverted) {
        _gfx->drawXBitmap(_x1, _y1, (const unsigned char *)_imgOn, _w, _h, text, fill);
     }
     else  if(_type==TEXT_ONLY) {
-      _gfx->fillRect(_x1, _y1, _w, _h, fill);
-
+       _gfx->fillRect(_x1, _y1, _w, _h, fill);
+       if(_labelValue)
+           _gfx->fillRect(_x1, _y1+_h, _w, _h, _fillcolor);
       _gfx->setTextColor(text);
 
       uint8_t tempdatum = _gfx->getTextDatum();
       _gfx->setTextDatum(ML_DATUM);
       _gfx->setFreeFont(_font);
       _gfx->drawString(_label, _x1 ,  _y1 + (_h/2) );
+      if(_labelValue) {
+          _gfx->setTextColor(_outlinecolor);
+          _gfx->drawString(_labelValue, _x1+10 ,  _y1 + _h+ (_h/2) );
+      }
       _gfx->setTextDatum(tempdatum);
     }
 
@@ -239,4 +247,9 @@ void TFT_eSPI_Button::setX( int16_t x)
 void TFT_eSPI_Button::setY( int16_t y)
 {
 	  _y1 = y;
+}
+
+void TFT_eSPI_Button::setLabelValue( char *s)
+{
+	  _labelValue = s;
 }
