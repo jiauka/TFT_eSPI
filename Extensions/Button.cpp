@@ -151,10 +151,10 @@ void TFT_eSPI_Button::drawButton(boolean inverted)
         uint8_t tempdatum = _gfx->getTextDatum();
         _gfx->setTextDatum(ML_DATUM);
         _gfx->setFreeFont(_font);
-        _gfx->drawString(_label, _x1, _y1 + (_h / 2));
+        _gfx->drawString(_label, _x1, _y1 + (_h / 2)-3);
         if (_labelValue) {
             _gfx->setTextColor(_outlinecolor);
-            _gfx->drawString(_labelValue, _x1 + 10, _y1 + _h + (_h / 2));
+            _gfx->drawString(_labelValue, _x1 + 10, _y1 + _h + (_h / 2)-2-3);
         }
         _gfx->setTextDatum(tempdatum);
     }
@@ -192,6 +192,16 @@ void TFT_eSPI_Button::disable(void)
 boolean TFT_eSPI_Button::disabled(void)
 {
     return _disabled;
+}
+
+void TFT_eSPI_Button::selectable(boolean yesno)
+{
+    _selectable = yesno;
+}
+
+boolean TFT_eSPI_Button::selectable(void)
+{
+    return _selectable;
 }
 
 boolean TFT_eSPI_Button::isPressed()
@@ -253,6 +263,11 @@ void TFT_eSPI_Button::setY(int16_t y)
 {
     _y1 = y;
 }
+int16_t TFT_eSPI_Button::getY(void)
+{
+    return _y1;
+}
+
 
 void TFT_eSPI_Button::setLabelValue(char *s)
 {

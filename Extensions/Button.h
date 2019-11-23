@@ -49,7 +49,11 @@ class TFT_eSPI_Button {
     void drawIcon(const unsigned short *icon, int16_t x, int16_t y, int8_t width, int8_t height);
     void setX(int16_t x);
     void setY(int16_t y);
+    int16_t  getY(void);
+
     void setLabelValue(char *s);
+    void selectable(boolean yesno);
+    boolean selectable();
     void enable();
     void disable();
     boolean disabled();
@@ -67,6 +71,6 @@ class TFT_eSPI_Button {
     void *_imgOn;               // BITMAP and XBM types
     void *_imgOff;              //BITMAP
     const GFXfont *_font;
-    boolean _currstate, _laststate, _disabled;
+    boolean _currstate, _laststate, _disabled,_selectable;
 };
 #endif
