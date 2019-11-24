@@ -57,6 +57,7 @@ class TFT_eSPI_Button {
     void enable();
     void disable();
     boolean disabled();
+    int16_t id;
  private:
      TFT_eSPI * _gfx;
     int16_t _x1, _y1;           // Coordinates of top-left corner
