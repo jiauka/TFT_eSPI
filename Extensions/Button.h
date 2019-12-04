@@ -20,6 +20,8 @@ class TFT_eSPI_Button {
 
  public:
     TFT_eSPI_Button(void);
+    ~TFT_eSPI_Button();
+
     // "Classic" initButton() uses center & size
     void initButton(TFT_eSPI * gfx, int16_t x, int16_t y,
                     uint16_t w, uint16_t h, uint16_t outline, uint16_t fill,
@@ -39,6 +41,8 @@ class TFT_eSPI_Button {
     void initButtonXUL(TFT_eSPI * gfx, int16_t x1, int16_t y1,
                        uint16_t w, uint16_t h, uint16_t fill, uint16_t background, uint16_t backgroundOff, void *img);
     void drawButton(boolean inverted = false);
+    void drawButtonY(int16_t y, boolean inverted= false);  
+
     boolean contains(int16_t x, int16_t y);
 
     void press(boolean p);
@@ -51,12 +55,15 @@ class TFT_eSPI_Button {
     void setY(int16_t y);
     int16_t  getY(void);
 
-    void setLabelValue(char *s);
     void selectable(boolean yesno);
     boolean selectable();
+    void safety(boolean yesno);
+    boolean isSafety();
     void enable();
     void disable();
     boolean disabled();
+    char *getLabelValue(void);
+
     int16_t id;
  private:
      TFT_eSPI * _gfx;
@@ -67,11 +74,11 @@ class TFT_eSPI_Button {
     uint16_t _fillcolor, _textcolor;
     espi_button_t _type;
     char *_label;
-    char *_labelValue;
+    char *_labelValue=NULL;
 
     void *_imgOn;               // BITMAP and XBM types
     void *_imgOff;              //BITMAP
     const GFXfont *_font;
-    boolean _currstate, _laststate, _disabled,_selectable;
+    boolean _currstate, _laststate, _disabled,_selectable,_safety;
 };
 #endif

@@ -7,6 +7,13 @@
 TFT_eSPI_Button::TFT_eSPI_Button(void)
 {
     _gfx = 0;
+    _currstate=_laststate=_disabled=_selectable=_safety=false;
+
+}
+TFT_eSPI_Button::~TFT_eSPI_Button()
+{
+	if(_labelValue)
+		free(_labelValue);
 }
 
 // Classic initButton() function: pass center & size
@@ -40,8 +47,6 @@ void TFT_eSPI_Button::initButtonUL(TFT_eSPI * gfx, int16_t x1, int16_t y1, uint1
     _gfx = gfx;
     _type = ROUND_BOX_TEXT;
     _label = label;
-    _laststate = _currstate = false;
-    _disabled = false;
 }
 
 // Newer function instead accepts upper-left corner & size
@@ -60,7 +65,8 @@ void TFT_eSPI_Button::initButtonTUL(TFT_eSPI * gfx, int16_t x1, int16_t y1, uint
     _gfx = gfx;
     _type = TEXT_ONLY;
     _label = label;
-    _labelValue = labelValue;
+    if(labelValue)
+        _labelValue=strdup(labelValue);
 
     _laststate = _currstate = false;
     _disabled = false;
@@ -101,13 +107,18 @@ void TFT_eSPI_Button::initButtonXUL(TFT_eSPI * gfx, int16_t x1, int16_t y1,
     _laststate = _currstate = false;
     _disabled = false;
 }
+void TFT_eSPI_Button::drawButtonY(int16_t y, boolean inverted)
+{
+    _y1=y;
+    drawButton(inverted);
+}
 
 void TFT_eSPI_Button::drawButton(boolean inverted)
 {
 
     uint16_t fill, outline, text;
     if (_disabled) {
-        fill = _fillcolor;
+        fill = TFT_DARKGREY;
         outline = _outlinecolor;
         text = TFT_LIGHTGREY;
     } else {
@@ -144,22 +155,27 @@ void TFT_eSPI_Button::drawButton(boolean inverted)
         _gfx->drawXBitmap(_x1, _y1, (const unsigned char *)_imgOn, _w, _h, text, fill);
     } else if (_type == TEXT_ONLY) {
         _gfx->fillRect(_x1, _y1, _w, _h, fill);
+#if 0
         if (_labelValue)
             _gfx->fillRect(_x1, _y1 + _h, _w, _h, _fillcolor);
+#endif
         _gfx->setTextColor(text);
 
         uint8_t tempdatum = _gfx->getTextDatum();
         _gfx->setTextDatum(ML_DATUM);
         _gfx->setFreeFont(_font);
         _gfx->drawString(_label, _x1, _y1 + (_h / 2)-3);
+#if 0
         if (_labelValue) {
             _gfx->setTextColor(_outlinecolor);
             _gfx->drawString(_labelValue, _x1 + 10, _y1 + _h + (_h / 2)-2-3);
         }
+#endif
         _gfx->setTextDatum(tempdatum);
     }
 
 }
+
 
 boolean TFT_eSPI_Button::contains(int16_t x, int16_t y)
 {
@@ -202,6 +218,15 @@ void TFT_eSPI_Button::selectable(boolean yesno)
 boolean TFT_eSPI_Button::selectable(void)
 {
     return _selectable;
+}
+void TFT_eSPI_Button::safety(boolean yesno)
+{
+    _safety = yesno;
+}
+
+boolean TFT_eSPI_Button::isSafety(void)
+{
+    return _safety;
 }
 
 boolean TFT_eSPI_Button::isPressed()
@@ -269,7 +294,7 @@ int16_t TFT_eSPI_Button::getY(void)
 }
 
 
-void TFT_eSPI_Button::setLabelValue(char *s)
+char *TFT_eSPI_Button::getLabelValue(void)
 {
-    _labelValue = s;
+    return _labelValue;
 }

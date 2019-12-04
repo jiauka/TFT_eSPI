@@ -7,6 +7,7 @@
 TFT_eSPI_Slider::TFT_eSPI_Slider(void)
 {
     _gfx = 0;
+    _currstate=_laststate=false;
 }
 
 // *** Init Horizontal Slider ***
@@ -33,6 +34,7 @@ void TFT_eSPI_Slider::initSliderH(TFT_eSPI * gfx, int16_t min1, int16_t max1, in
     _drawvalue = 0;
     _type = type;
     _gap=20;
+    _oldvalue=-1;
 }
 
 // *** Draw Horizontal Slider ***
@@ -59,7 +61,7 @@ void TFT_eSPI_Slider::drawSliderH(int16_t value)
             _pos = map(value, _min, _max, 0, _w - _gap);
             // Draw Gap
             _gfx->fillRect(_x, _y+(_h/2)-2, _pos, 4, _fillcolor);   // Fill up to value
-            _gfx->fillRect(_x + _pos + _gap, _y+(_h/2)-2, _w - _pos - _gap, 4, _nofillcolor);       // Fill Rest
+            _gfx->fillRect(_x + _pos + _gap, _y+(_h/2)-2, _w - _pos - _gap*2, 4, _nofillcolor);       // Fill Rest
             _oldvalue = value;
             // Draw Knob
             _gfx->fillCircle(_x + _pos, _y+(_h/2), _gap, _knobcolor);    // Fill up to value
