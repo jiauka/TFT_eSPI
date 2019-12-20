@@ -29,7 +29,7 @@
 
 // If the frequency is not defined, set a default
 #ifndef SPI_FREQUENCY
-#define SPI_FREQUENCY  20000000
+//#define SPI_FREQUENCY  2000000
 #endif
 
 // If the frequency is not defined, set a default

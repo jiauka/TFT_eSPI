@@ -244,15 +244,15 @@
 // The RPi typically only works at 20MHz maximum.
 
 //#define SPI_FREQUENCY   1000000
-//#define SPI_FREQUENCY   5000000
+#define SPI_FREQUENCY   4000000
 //#define SPI_FREQUENCY  10000000
 // #define SPI_FREQUENCY  20000000
 //#define SPI_FREQUENCY  27000000 // Actually sets it to 26.67MHz = 80/3
-#define SPI_FREQUENCY  40000000 // Maximum to use SPIFFS
+//#define SPI_FREQUENCY  40000000 // Maximum to use SPIFFS
 // #define SPI_FREQUENCY  80000000
 
 // Optional reduced SPI frequency for reading TFT
-#define SPI_READ_FREQUENCY  20000000
+#define SPI_READ_FREQUENCY  4000000
 
 // The XPT2046 requires a lower SPI clock rate of 2.5MHz so we define that here:
 #define SPI_TOUCH_FREQUENCY  2500000
